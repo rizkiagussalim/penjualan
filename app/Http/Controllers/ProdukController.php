@@ -6,6 +6,12 @@ use App\Models\Product;
 
 class ProdukController extends Controller
 {
+    public function __construct()
+    {
+        // Pembatasan akses berdasarkan permission
+        $this->middleware('permission:view_products')->only(['index', 'show']);
+    }
+
     public function index()
     {
         $produk = Product::all();

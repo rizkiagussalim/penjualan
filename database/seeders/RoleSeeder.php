@@ -5,31 +5,29 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Models\User;
+
 
 class RoleSeeder extends Seeder
 {
     public function run(): void
     {
-        // Buat role Admin dan Pembeli
-        $admin = Role::firstOrCreate(['name' => 'admin']);
-        $pembeli = Role::firstOrCreate(['name' => 'pembeli']);
+        // Buat role admin
+        $adminRole = Role::firstOrCreate(['name' => 'admin']);
 
-        // Buat permissions CRUD
-        $permissions = [
-            'view_users', 'create_users', 'update_users', 'delete_users',
-            'view_products', 'create_products', 'update_products', 'delete_products',
-        ];
-
+        // Buat permission dasar
+        $permissions = ['view category', 'create category', 'edit category', 'delete category'];
         foreach ($permissions as $permission) {
             Permission::firstOrCreate(['name' => $permission]);
         }
 
-        // Admin: akses semua
-        $admin->givePermissionTo(Permission::all());
+        // Assign semua permission ke admin
+        $adminRole->syncPermissions(Permission::all());
 
-        // Pembeli: hanya bisa melihat
-        $pembeli->givePermissionTo([
-             'view_products'
-        ]);
+        // Assign role admin ke user pertama
+        $user = User::first();
+        if ($user) {
+            $user->assignRole($adminRole);
+        }
     }
 }

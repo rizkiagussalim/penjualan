@@ -12,9 +12,18 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Traits\HasDynamicPermission;
 
 class UserResource extends Resource
 {
+
+    use HasDynamicPermission;
+
+    protected static function getPermissionName(): string
+    {
+        return 'users';
+    }
+
     protected static ?string $model = User::class;
     protected static ?string $navigationIcon = 'heroicon-o-users';
     protected static ?string $navigationGroup = 'Manajemen Role';

@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('icon')->nullable(); // ⬅️ Tambahkan kolom icon
-            $table->timestamps();
+        Schema::table('categories', function (Blueprint $table) {
+            $table->string('icon')->nullable()->after('name'); // Tambahkan kolom 'icon'
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->dropColumn('icon'); // Hapus kolom 'icon' jika rollback
+        });
     }
 };
