@@ -1,3 +1,5 @@
+ Note: Ini mengasumsikan Anda telah menginstal SQL Server, xampp dan laravel dengan benar di sistem Anda.
+
 1. Restore Database dari file 'ids-sales.bak' dari folder 'sql-server-things'
 2. Update .env file
 DB_CONNECTION=sqlsrv
@@ -14,3 +16,5 @@ extension=php_pdo_sqlsrv_82_ts_x64.dll
 5. Restart xampp server
 6. Jalankan perintah 'npm run dev', biarkan terus berjalan
 7. Buka terminal baru, jalankan perintah 'php artisan serve'
+8. Buka browser dan akses http://127.0.0.1:8000/dashboard
+9. Login dengan username 'admin@gmail.com' dan password 'admin123'
