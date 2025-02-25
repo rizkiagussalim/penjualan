@@ -1,4 +1,3 @@
-```markdown
 # Panduan Instalasi dan Konfigurasi Aplikasi
 
 ## Prasyarat
@@ -47,4 +46,3 @@ Panduan ini mengasumsikan bahwa Anda telah menginstal SQL Server, XAMPP, dan Lar
    - Login dengan menggunakan kredensial berikut:
      - **Username:** `admin@gmail.com`
      - **Password:** `admin123`
-```
