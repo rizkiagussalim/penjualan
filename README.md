@@ -12,3 +12,5 @@ DB_PASSWORD=# sesuaikan
 extension=php_sqlsrv_82_ts_x64.dll
 extension=php_pdo_sqlsrv_82_ts_x64.dll
 5. Restart xampp server
+6. Jalankan perintah 'npm run dev', biarkan terus berjalan
+7. Buka terminal baru, jalankan perintah 'php artisan serve'
